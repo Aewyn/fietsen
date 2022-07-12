@@ -16,4 +16,7 @@ public class DocentRepository {
     public Optional<Docent> findById(long id){
         return Optional.ofNullable(manager.find(Docent.class, id));
     }
+    public void create(Docent docent){
+        manager.persist(docent);
+    }
 }
