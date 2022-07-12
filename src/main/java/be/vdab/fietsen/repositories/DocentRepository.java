@@ -19,4 +19,8 @@ public class DocentRepository {
     public void create(Docent docent){
         manager.persist(docent);
     }
+
+    public void delete(long id){
+        findById(id).ifPresent(manager::remove);
+    }
 }
