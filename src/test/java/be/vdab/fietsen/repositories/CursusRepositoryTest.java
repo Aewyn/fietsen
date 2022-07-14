@@ -33,11 +33,11 @@ class CursusRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests
     }
 
     private UUID idVanTestGroepsCursus(){
-        return jdbcTemplate.queryForObject("select id from cursussen where naam = 'testGroep'", UUID.class);
+        return jdbcTemplate.queryForObject("select bin_to_uuid(id) from groepscursussen where naam = 'testGroep'", UUID.class);
     }
 
     private UUID idVanTestIndividueleCursus(){
-        return jdbcTemplate.queryForObject("select id from cursussen where naam = 'testIndividueel'", UUID.class);
+        return jdbcTemplate.queryForObject("select bin_to_uuid(id) from individuelecursussen where naam = 'testIndividueel'", UUID.class);
     }
 
     @Test
