@@ -33,16 +33,6 @@ public class DocentRepository {
         order by d.wedde
         """, Docent.class).getResultList();
     }
-//    public List<Docent> findByWeddeBetween(BigDecimal van, BigDecimal tot){
-//        return manager.createQuery("""
-//        select d
-//        from Docent d
-//        where d.wedde between :van and :tot
-//        """, Docent.class)
-//                .setParameter("van", van)
-//                .setParameter("tot", tot)
-//                .getResultList();
-//    }
     public List<Docent> findByWeddeBetween(BigDecimal van, BigDecimal tot){
         return manager.createNamedQuery("Docent.findByWeddeBetween", Docent.class)
                 .setParameter("van", van)
