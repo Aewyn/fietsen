@@ -2,6 +2,7 @@ package be.vdab.fietsen.repositories;
 
 import be.vdab.fietsen.domain.Adres;
 import be.vdab.fietsen.domain.Campus;
+import be.vdab.fietsen.domain.TelefoonNr;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
@@ -44,5 +45,9 @@ class CampusRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests
         var campus = new Campus("test", new Adres("test", "test", "test", "test"));
         repository.create(campus);
         assertThat(countRowsInTableWhere(CAMPUSSEN, "id = " + campus.getId())).isOne();
+    }
+    @Test
+    void telefoonNrsLezen(){
+        assertThat(repository.findById(idVanTestCampus())).hasValueSatisfying(campus -> assertThat(campus.getTelefoonNrs()).containsOnly(new TelefoonNr("1", false, "test")));
     }
 }
